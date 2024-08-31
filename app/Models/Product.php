@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function comments()
-{
-    return $this->hasMany(Comment::class); 
-    // 'comments' là tên mặc định, nếu bạn đặt tên khác hãy điều chỉnh cho phù hợp
-}
     use HasFactory;
     //Disable the model timestamps
     public $timestamps = false;

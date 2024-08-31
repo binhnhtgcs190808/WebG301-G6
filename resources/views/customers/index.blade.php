@@ -69,7 +69,10 @@
                                         <a class="nav-link" href='{{ url('customers/products') }}'>Products</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href='{{ url('customers/comment') }}'>Comment</a>
+                                        <a class="nav-link" href="about.html">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href='{{ url('admin/index') }}'>Admin Panel</a>
                                     </li>
                                     <li class="nav-item d_none">
                                         <a class="nav-link" href="#"><i class="fa fa-search"
@@ -570,3 +573,4 @@
     <script src="./customers/js/custom.js"></script>
 </body>
 
+</html>

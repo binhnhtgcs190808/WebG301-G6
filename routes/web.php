@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -76,20 +76,6 @@ Route::post('admin/save', [AdminController::class, 'save'])->name('save');
 Route::get('admin/edit/{id}', [AdminController::class, 'edit'])->name('edit');
 Route::post('admin/update', [AdminController::class, 'update'])->name('update');
 Route::get('admin/delete/{id}', [AdminController::class, 'delete'])->name('delete');
-
-
-
-Route::get('admin/adminProfile', [AdminController::class, 'getAdminProfile'])->name('admin.getAdminProfile');
-Route::get('admin/editAdmin/{id}', [AdminController::class, 'editAdmin'])->name('editAdmin');
-Route::post('admin/updateAdmin', [AdminController::class, 'updateAdmin'])->name('updateAdmin');
-Route::get('admin/deleteAdmin/{id}', [AdminController::class, 'deleteAdmin'])->name('deleteAdmin');
-Route::post('admin/store', [AdminController::class, 'store'])->name('store');
-
-Route::get('customers/comment', [CommentController::class, 'index'])->name('index');
-Route::get('customers/commentEdit/{id}', [CommentController::class, 'cmtEdit'])->name('cmtEdit');
-Route::post('customers/cmtUpdate', [CommentController::class, 'cmtUpdate'])->name('cmtUpdate');
-Route::get('customers/cmtDelete/{id}', [CommentController::class, 'cmtDelete'])->name('cmtDelete');
-Route::post('customers/store', [CommentController::class, 'store'])->name('store');
 
 //category crud
 Route::get('admin/category', [CategoryController::class, 'catAdmin'])->name('catAdmin');

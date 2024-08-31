@@ -122,7 +122,7 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5">
+    <!--<div class="container mt-5">
         <h1>Products</h1>
         <div class="row">
             @foreach ($data as $pro)
@@ -143,7 +143,7 @@
                 </div>
 @endforeach
         </div>
-    </div>
+    </div>-->
     <!--end products-->
     <!--footer-->
     <footer>
@@ -205,3 +205,5 @@
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/custom.js"></script>
 </body>
+
+</html>

@@ -1,4 +1,101 @@
-$pro->productDetails = $request->details;
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Facades\Hash as FacadesHash;
+
+class AdminController extends Controller
+{
+    //profile
+    public function profilepage()
+    {
+        return view('profile');
+    }
+
+    /*public function index()
+    {
+        return view('admin.index');
+    }
+
+    public function login()
+    {
+        return view('admin.login');
+    }
+
+    public function register()
+    {
+        return view('admin.register');
+    }
+
+    public function checkRegister(Request $request)
+    {
+        $this->validate($request, [
+            'adminID' => 'required|string|max:50|unique:adminID',
+            'adminFullname' => 'required|string|max:255',
+            'adminPass' => 'required|string|min:6|confirmed',
+        ]);
+
+        // Create a new User instance
+        $admin = new Admin();
+        $admin->adminID = $request->input('adminID');
+        $admin->adminFullname = $request->input('adminFullname');
+        $admin->adminPhoto = $request->input('adminPhoto');
+        $admin->adminPass = bcrypt($request->input('adminPass'));
+        $admin->adminAddress = $request->input('adminAddress'); // Replace with the actual input field name
+        // Save the admin user to the database
+        $admin->save();
+
+        return redirect('admin/adminProfile'); // Redirect to admin dashboard or desired page
+    }
+
+    public function checkLogin(Request $request)
+    {
+        $admin = Admin::where('adminID', '=', $request->adminID)->first();
+        if ($admin) {
+            if ($admin->adminPass == $request->adminPass) {
+                $request->session()->put('adminID', $admin->adminID);
+                $request->session()->put('adminPhoto', $admin->adminPhoto);
+                $request->session()->put('adminFullname', $admin->adminFullname);
+                return redirect('admin/index');
+            } else {
+                return back()->with('fail', 'Password is not match!');
+            }
+        } else {
+            return back()->with('fail', 'Admin id is not existed!');
+        }
+    }
+
+    public function logout()
+    {
+        if (Session::has('adminID'))
+            Session::pull('adminID');
+        if (Session::has('adminPhoto'))
+            Session::pull('adminPhoto');
+        if (Session::has('adminFullname'))
+            Session::pull('adminFullname');
+        return redirect('admin/login');
+    }*/
+
+    public function add()
+    {
+        $category = Category::get();
+        return view('admin/add', compact('category'));
+    }
+
+    public function save(Request $request)
+    {
+        $pro = new Product();
+        $pro->productID = $request->id;
+        $pro->productName = $request->name;
+        $pro->productPrice = $request->price;
+        $pro->productImage = $request->image;
+        $pro->productDetails = $request->details;
         $pro->catID = $request->category;
         $pro->save();
         return redirect()->back()->with('success', 'Product added successfully!');
@@ -87,7 +184,8 @@ $pro->productDetails = $request->details;
             'password' => Hash::make($validatedData['password']),
             'type' => $type,
         ]);
-// Gán vai trò admin cho người dùng mới
+
+        // Gán vai trò admin cho người dùng mới
         if ($type == 1) {
             $user->type;
         }

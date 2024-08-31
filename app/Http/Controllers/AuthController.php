@@ -60,7 +60,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             //'type' => $isAdmin ? 1 : 0, // 1 cho admin, 0 cho người dùng thường
-            'type' => 0,
+            'type' => 0, //mặc định type của người dùng form register đều là customer
         ]);
         return redirect()->route('login');
     }
